@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour {
 		case stateMachine.START:
 		{
 			score = 0;
-			//HUD.AddScore(score);
+			HUD.AddScore(score);
 			SwitchState(stateMachine.PLAY);
 			
 			currentCheckPoint = checkPoint.SpawnCheckPoint();
@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour {
 			if(currentTimeToScore > timeToScore){
 				currentTimeToScore = 0;
 				score++;
-				//HUD.AddScore(score*basePoints);
+				HUD.AddScore(score*basePoints);
 			}
 			
 			
@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour {
 				
 				
 				score += pointsCheckPoint;
-				//HUD.AddScore(score*basePoints);
+				HUD.AddScore(score*basePoints);
 
 	
 				//player.ResetPosition();

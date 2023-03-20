@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HUDController : MonoBehaviour {
 	
-	public TextMesh score;
+	public GUIText score;
 	public PlayerBehaviour player;
 	public Transform barXixi;
 	

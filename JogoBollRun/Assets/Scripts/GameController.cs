@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour {
 				HUD.AddScore(score*basePoints);
 
 	
-				//player.ResetPosition();
+				player.ResetPosition();
 				
 				enemyController.AddDifficulty();
 			}

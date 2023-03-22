@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour {
-<<<<<<< HEAD
 	
 	public float totalXixi = 10;
 	
@@ -79,16 +78,4 @@ public class PlayerBehaviour : MonoBehaviour {
 
    
 
-=======
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
->>>>>>> parent of bcce002 (Maquina de estados)
 }

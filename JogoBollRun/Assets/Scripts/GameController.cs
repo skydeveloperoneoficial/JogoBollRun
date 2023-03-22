@@ -1,8 +1,36 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameController : MonoBehaviour {
+public enum stateMachine{
+	START,
+	RELOAD,
+	PAUSED,
+	PLAY,
+	WIN,
+	LOSE,
+	NULL
+}
 
+public class GameController : MonoBehaviour {
+	
+	private stateMachine currentState = stateMachine.START;
+	private stateMachine lastState = stateMachine.NULL;
+	
+	
+	private int score;
+	private float currentTimeToScore = 0;
+	private float currentTimeToRespawn = 0;
+	
+	public PlayerBehaviour player;
+	public HUDController HUD;
+	public CheckPointController checkPoint;
+	public EnemyController enemyController;
+	public int basePoints = 1;
+	public int pointsCheckPoint = 1;
+	public float timeToScore = 3;
+	public float timeToRespawn = 2;
+	private Transform currentCheckPoint;
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -10,8 +38,9 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		GameStateMachine();
+	}
 	
-<<<<<<< HEAD
 	public void SwitchState(stateMachine nextState){
 		lastState = currentState;
 		currentState = nextState;	
@@ -36,8 +65,7 @@ public class GameController : MonoBehaviour {
 		break;
 		case stateMachine.RELOAD:
 		{
-			Application.LoadLevel("Gameplay");
-			//Application.LoadLevel(Application.loadedLevelName);
+			Application.LoadLevel(Application.loadedLevelName);
 		}
 		break;
 		case stateMachine.PAUSED:
@@ -50,7 +78,7 @@ public class GameController : MonoBehaviour {
 		{
 			//Player
 			player.Move();
-			//player.IncreaseXixi();
+			player.IncreaseXixi();
 			
 			//input 
 			BasicInputs();
@@ -85,7 +113,7 @@ public class GameController : MonoBehaviour {
 				HUD.AddScore(score*basePoints);
 
 	
-				player.ResetPosition();
+				//player.ResetPosition();
 				
 				enemyController.AddDifficulty();
 			}
@@ -95,9 +123,8 @@ public class GameController : MonoBehaviour {
 		break;
 		case stateMachine.LOSE:
 		{
-			//ApplicationController.AddToRanking(score*basePoints);
-			//Application.LoadLevel("Ranking");
-			Application.LoadLevel("Gameplay");
+			ApplicationController.AddToRanking(score*basePoints);
+			Application.LoadLevel("Ranking");
 			
 		}
 		break;
@@ -118,7 +145,5 @@ public class GameController : MonoBehaviour {
 		else if(Input.GetKeyDown(KeyCode.R)){
 			SwitchState(stateMachine.RELOAD);
 		}
-=======
->>>>>>> parent of bcce002 (Maquina de estados)
 	}
 }

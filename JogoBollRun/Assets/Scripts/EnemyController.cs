@@ -2,17 +2,42 @@ using UnityEngine;
 using System.Collections;
 
 public class EnemyController : MonoBehaviour {
-
+	
+	public float radiusMin = 3;
+	public float radiusMax = 15;
+	
+	public int totalEnemysInGame;
+	public float timeToRespawn;
+	
+	public float difficultyFactor = 1;
+	public float difficultyAdd = 0.5f;
+	
+	
+	public EnemyBehaviour enemy;
+	
+	public GameController gameController;
+	
+	private float currentTime = 0;
+	
+	private int currentEnemys = 0;
+	
 	// Use this for initialization
 	void Start () {
+
+		
+		
 	
+	}
+	
+	public void DecreaseEnemy(){
+		if(currentEnemys > 0)
+			currentEnemys--;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-<<<<<<< HEAD
 		
-			if(currentEnemys < totalEnemysInGame){
+		if(currentEnemys < totalEnemysInGame){
 		
 			if(currentTime > timeToRespawn && gameController.GetCurrentState() == stateMachine.PLAY){
 				CreateEnemy();
@@ -24,11 +49,11 @@ public class EnemyController : MonoBehaviour {
 			}
 			
 		}
+	
 	}
 	
 	void CreateEnemy(){
 		
-	
 		GameObject tempEnemy = Instantiate(enemy.gameObject) as GameObject;
 		
 		tempEnemy.transform.parent = transform;
@@ -44,17 +69,13 @@ public class EnemyController : MonoBehaviour {
 		
 		currentEnemys++;
 
-
 		
-	}	
+	}
+	
 	public void AddDifficulty(){
 		difficultyFactor += difficultyAdd;
 	}
 	
 	
 	
-=======
-	
-	}
->>>>>>> parent of bcce002 (Maquina de estados)
 }

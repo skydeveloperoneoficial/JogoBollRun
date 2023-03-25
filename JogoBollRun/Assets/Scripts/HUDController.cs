@@ -5,23 +5,24 @@ public class HUDController : MonoBehaviour {
 	
 	public TextMesh score;
 	public PlayerBehaviour player;
-	public Transform barXixi;
+	public Transform barPee;
 	
 	private Vector3 newSize;
-	private Vector3 sizeBarXixi;
+	private Vector3 sizeBarPee;
 
 	// Use this for initialization
 	void Start () {
-		sizeBarXixi = barXixi.transform.localScale;
-		newSize = sizeBarXixi;
+		sizeBarPee = barPee.transform.localScale;
+		newSize = sizeBarPee;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		newSize.x = sizeBarXixi.x * player.getCurrentXixi() / player.totalXixi;
+		newSize.x = sizeBarPee.x * player.getCurrentPee() / player.totalPee;
 		
-		barXixi.transform.localScale = newSize;
+		barPee.transform.localScale = newSize;
+		
 
 	
 	}

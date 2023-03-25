@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour {
 		{
 			//Player
 			player.Move();
-			player.IncreaseXixi();
+			player.IncreasePee();
 			
 			//input 
 			BasicInputs();

@@ -3,10 +3,10 @@ using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour {
 	
-	public float totalXixi = 10;
+	public float totalPee = 10;
 	
-	public float xixiToIncrease = 1;
-	public float timeToXixi = 4;
+	public float PeeToIncrease = 1;
+	public float timeToPee = 4;
 	
 	public float speed = 3.0F;
     public float rotateSpeed = 3.0F;
@@ -14,8 +14,8 @@ public class PlayerBehaviour : MonoBehaviour {
 	public GameController gameController;
 	
 	private Vector3 startPosition;
-	private float currentTimeToXixi = 0;
-	private float currentXixi = 0;
+	private float currentTimeToPee = 0;
+	private float currentPee = 0;
 	
 	
 	// Use this for initialization
@@ -39,19 +39,19 @@ public class PlayerBehaviour : MonoBehaviour {
 	
 	}
 	
-	public float getCurrentXixi(){
-		return currentXixi;
+	public float getCurrentPee(){
+		return currentPee;
 	}
 	
-	public void IncreaseXixi(){
-		currentTimeToXixi += Time.deltaTime;
+	public void IncreasePee(){
+		currentTimeToPee += Time.deltaTime;
 		
-		if(currentTimeToXixi > timeToXixi){
-			currentTimeToXixi = 0;
-			currentXixi += xixiToIncrease;
+		if(currentTimeToPee > timeToPee){
+			currentTimeToPee = 0;
+			currentPee += PeeToIncrease;
 		}
 		
-		if(currentXixi > totalXixi){
+		if(currentPee > totalPee){
 			gameController.SwitchState(stateMachine.LOSE);
 		}
 		
@@ -62,7 +62,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	   		gameController.SwitchState(stateMachine.LOSE);
 		}
 		if(hit.gameObject.tag == "CheckPoint"){
-			currentXixi = 0;
+			currentPee = 0;
 			gameController.SwitchState(stateMachine.WIN);
 		}
 

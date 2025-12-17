@@ -8,13 +8,18 @@ public class EnemyBehaviour : MonoBehaviour {
 	private GameController gameController;
 	
 	public EnemyController enemyController;
+	
 	// Use this for initialization
 	void Start () {
-	gameController = FindObjectOfType(typeof(GameController))as GameController;
+
+		gameController = FindObjectOfType(typeof(GameController)) as GameController;
+		
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if(gameController.GetCurrentState() == stateMachine.PLAY){
 			
 			//Enemy Action
@@ -28,5 +33,7 @@ public class EnemyBehaviour : MonoBehaviour {
 			
 			
 		}
+
+	
 	}
 }

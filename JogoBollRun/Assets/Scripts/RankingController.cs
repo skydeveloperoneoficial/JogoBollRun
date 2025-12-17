@@ -10,7 +10,13 @@ public class RankingController : MonoBehaviour {
 		
 		scoreDisplay.text = "";
 		
+		int[] tempRanking = ApplicationController.GetRanking();
 		
+		for(int i = ApplicationController.numberPositionRanking-1; i >= 0; i--){
+			scoreDisplay.text += tempRanking[i].ToString("D4");
+			scoreDisplay.text += "\n";
+		}
+	
 	}
 	
 	// Update is called once per frame

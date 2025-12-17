@@ -55,16 +55,17 @@ public class GameController : MonoBehaviour {
 		switch(currentState){
 		case stateMachine.START:
 		{
-			
+			score = 0;
+			HUD.AddScore(score);
 			SwitchState(stateMachine.PLAY);
 			
-			
+			currentCheckPoint = checkPoint.SpawnCheckPoint();
 
 		}
 		break;
 		case stateMachine.RELOAD:
 		{
-			
+			Application.LoadLevel(Application.loadedLevelName);
 		}
 		break;
 		case stateMachine.PAUSED:
@@ -77,12 +78,18 @@ public class GameController : MonoBehaviour {
 		{
 			//Player
 			player.Move();
-			
+			player.IncreasePee();
 			
 			//input 
 			BasicInputs();
 			
-			
+			//Score
+			currentTimeToScore += Time.deltaTime;
+			if(currentTimeToScore > timeToScore){
+				currentTimeToScore = 0;
+				score++;
+				HUD.AddScore(score*basePoints);
+			}
 			
 			
 		}
@@ -90,16 +97,34 @@ public class GameController : MonoBehaviour {
 		case stateMachine.WIN:
 		{		
 			
+			currentTimeToRespawn += Time.deltaTime;
+			
+			if(currentTimeToRespawn >= timeToRespawn){
+				currentTimeToRespawn = 0;
+				SwitchState(stateMachine.PLAY);
+				
 				//input 
 				BasicInputs();
 				
-			
+				checkPoint.SpawnInNewPosition(currentCheckPoint);
+				
+				
+				score += pointsCheckPoint;
+				HUD.AddScore(score*basePoints);
+
+	
+				player.ResetPosition();
+				
+				enemyController.AddDifficulty();
+			}
 			
 			
 		}
 		break;
 		case stateMachine.LOSE:
 		{
+			ApplicationController.AddToRanking(score*basePoints);
+			Application.LoadLevel("Ranking");
 			
 		}
 		break;
